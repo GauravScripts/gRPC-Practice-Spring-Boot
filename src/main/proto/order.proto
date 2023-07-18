@@ -1,0 +1,22 @@
+syntax ="proto3";
+import "google/protobuf/timestamp.proto";
+option  java_package ="com.shopping.stubs.order";
+option java_multiple_files = true;
+service OrderService{
+  rpc getOrdersForUser(OrderRequest) returns (OrderResponse);
+}
+message OrderRequest{
+  int32 user_id=1;
+}
+message OrderResponse{
+  repeated Order order = 1;
+
+}
+
+message Order{
+  int32 user_id =1;
+  int32 order_id =2;
+  int32  no_of_items =3;
+  double total_amount =4;
+google.protobuf.Timestamp order_date =5;
+}
